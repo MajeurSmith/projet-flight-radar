@@ -8,4 +8,4 @@ def envoieMail(txt : str, objet : str, destinataire : str):
     email.Subject = objet
     email.HTMLBody=txt
     email.Send()
-    print("mail envoyé")
+
