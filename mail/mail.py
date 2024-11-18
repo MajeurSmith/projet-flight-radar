@@ -4,17 +4,20 @@ import os
 
 localPath = os.path.dirname(os.path.abspath(__file__))
 
-def envoieMailAnnexe(destinataire : str, objet : str, txt : str, ):
+def envoieMail(destinataire : str, objet : str, txt : str, annexe : bool = False):
     """
     destinataire : addresse mail du destinataire au format str
     objet : objet du mail au format str
     txt : texte du mail au format str; possibilité de l'écrire dans le language HTML
-    envoie le fichier TableauVol.pdf se trouvant dans le dossier images
+    annexe : si annexe == True alors le fichier TableauVol.pdf se troyvant dans images est envoyé au déstinataire, sinon il n'est pas envoyé
+    envoie un mail au déstinataire
     """
     outlook = win32.Dispatch('outlook.application')   # création avec Outlook
     email = outlook.CreateItem(0)                     # Création d'un e-mail
     email.to = destinataire
     email.Subject = objet
     email.HTMLBody = txt
-    email.Attachments.Add(localPath + "\..\images\TableauVol.pdf")
+    if annexe:
+        email.Attachments.Add(localPath + "\..\images\TableauVol.pdf")
     email.Send()
+
