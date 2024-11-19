@@ -40,7 +40,7 @@ def connectionRadar():
 
 def createTable(table):
     """
-    connection : truc pratique renvoyé par connectionRadar()
+    table : truc pratique renvoyé par connectionRadar()
     Crée la table dans la bdd bddRadar
     """
     create_table_sql = '''
@@ -68,7 +68,3 @@ def ajouterElementLigne(table, id : int, nom : str, prenom : str, mdp : str, mai
     """
     table.execute(f"INSERT INTO Compte (ID, Nom, Prenom, Mdp, Mail, ClefApi, NbApi) VALUES ('"+str(id)+"','"+str(nom)+"','"+str(prenom)+"','"+hash(str(mdp))+"','"+str(mail)+"','"+str(clefApi)+"','"+str(NbApi)+"')")
     
-
-table=connectionRadar()
-createTable(table)
-ajouterElementLigne(table , 1 ,'bernard', 'louis','yzgfyg','agudgauf@zgfzug.com','uheuigh',100)
