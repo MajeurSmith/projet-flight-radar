@@ -1,2 +1,0 @@
-richard	richard.bob@gmail.com	9f196160	100	clef_utilisateur
-bob	bob.michel@free.fr	4846651321	100	clef_utilisateur
