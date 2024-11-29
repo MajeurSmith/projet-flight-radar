@@ -58,7 +58,7 @@ def createTable(table):
     cursor.execute(create_table_sql)
     table.commit()
 
-def ajouterElementLigne(table, id : int, nom : str, prenom : str, mdp : str, mail : str, clefApi : str, NbApi : int):
+def ajouterCompte(table, id : int, nom : str, prenom : str, mdp : str, mail : str, clefApi : str, NbApi : int):
     """
     table : truc pratique renvoyé par connectionRadar
     id : int ou str; id de l'utilisateur dans la base de données
@@ -67,4 +67,30 @@ def ajouterElementLigne(table, id : int, nom : str, prenom : str, mdp : str, mai
     mdp : str; mdp du compte, il est automatiquement hasher avant d'être enregistré
     """
     table.execute(f"INSERT INTO Compte (ID, Nom, Prenom, Mdp, Mail, ClefApi, NbApi) VALUES ('"+str(id)+"','"+str(nom)+"','"+str(prenom)+"','"+hash(str(mdp))+"','"+str(mail)+"','"+str(clefApi)+"','"+str(NbApi)+"')")
-    
+
+def select(table, mail : str, nameTable : str = "Compte")->tuple:
+    cursor = table.cursor()
+    cursor.execute(f"SELECT * FROM Compte WHERE Mail = '{mail}';")
+    for data in cursor: return data
+
+def supprimerCompte(table, mail : str):
+    table.execute(f"DELETE FROM Compte WHERE Mail='{mail}';")
+
+def getNomUtilisateur(utilisateur : tuple):
+    return utilisateur[1]
+
+def getPrenomUtilisateur(utilisateur : tuple):
+    return utilisateur[2]
+
+def getMdpUtilisateur(utilisateur : tuple):
+    return utilisateur[3]
+
+def getMailUtilisateur(utilisateur : tuple):
+    return utilisateur[4]
+
+def getKeyApiUtilisateur(utilisateur : tuple):
+    return utilisateur[5]
+
+def getNbApi(utilisateur : tuple):
+    return utilisateur[6]
+
