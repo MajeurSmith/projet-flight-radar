@@ -1,6 +1,7 @@
 import pyodbc
 import hashlib
 
+
 def hash(password: str) -> str:
     """
     Procédure qui renvoie la chaîne de caractère 'password' encodée
@@ -24,8 +25,7 @@ def hash(password: str) -> str:
     
     return(hashedPassword) # Renvoie du mot de passe encodé
 
-
-def connectionRadar():
+def connectionRadar()->object:
     """
     Aucun argument
     Permet de se connecter à la bdd Radar
@@ -58,7 +58,7 @@ def createTable(table):
     cursor.execute(create_table_sql)
     table.commit()
 
-def ajouterCompte(table, id : int, nom : str, prenom : str, mdp : str, mail : str, clefApi : str, NbApi : int):
+def ajouterCompte(table, nom : str, prenom : str, mdp : str, mail : str, clefApi : str, NbApi : int):
     """
     table : truc pratique renvoyé par connectionRadar
     id : int ou str; id de l'utilisateur dans la base de données
@@ -66,7 +66,7 @@ def ajouterCompte(table, id : int, nom : str, prenom : str, mdp : str, mail : st
     prenom : str; prénom du compte
     mdp : str; mdp du compte, il est automatiquement hasher avant d'être enregistré
     """
-    table.execute(f"INSERT INTO Compte (ID, Nom, Prenom, Mdp, Mail, ClefApi, NbApi) VALUES ('"+str(id)+"','"+str(nom)+"','"+str(prenom)+"','"+hash(str(mdp))+"','"+str(mail)+"','"+str(clefApi)+"','"+str(NbApi)+"')")
+    table.execute(f"INSERT INTO Compte (Nom, Prenom, Mdp, Mail, ClefApi, NbApi) VALUES ('"+str(nom)+"','"+str(prenom)+"','"+hash(str(mdp))+"','"+str(mail)+"','"+str(clefApi)+"','"+str(NbApi)+"')")
 
 def select(table, mail : str, nameTable : str = "Compte")->tuple:
     cursor = table.cursor()
