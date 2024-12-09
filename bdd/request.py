@@ -19,6 +19,14 @@ def chercherDeppart(aeroport : str, key : str)->list:
             listeVol.append(response["data"][i])
     return listeVol
 
+url = "https://api.aviationstack.com/v1/flights?access_key="+key
+response = requests.get(url)
+response=response.json()
+print(response)
+print("fin du programme")
+
+
+
 def chercherArriver(aeroport : str, key : str)->list:
     """
     aeroport : str, corresppond à l'aéroport de départ
