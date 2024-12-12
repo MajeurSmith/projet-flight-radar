@@ -28,7 +28,6 @@ def hash(password: str) -> str:
     ## Encodage de la chaîne de caractère (fin) ##
     return(hashedPassword) # Renvoie du mot de passe encodé
 
-
 def ajouterUtilisateur(nom : str, prenom : str, mail : str, mdp : str):
     """
     Ajoute un utilisateur dans la base de données qui a pour clef "comptes"
