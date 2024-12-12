@@ -120,6 +120,13 @@ def lireUtilisateur(clefUtilisateur : str)->dict:
     except:
         print("connexion internet instable")
 
+def getTousUtilisateurs()->dict:
+    """
+    permet de renvoyer l'ensemble des données stockées 
+    ne prend pas d'argument
+    """
+    return(db.reference('comptes').get())
+
 def getNomUtilisateur(utilisateur : dict)->str:
     return utilisateur["nom"]
 
@@ -137,4 +144,5 @@ def getClefApiUtilisateur(utilisateur : dict)->str:
 
 def getNbClefApiUtilisateur(utilisateur : dict)->str:
     return utilisateur["nbApi"]
+
 
