@@ -28,25 +28,24 @@ def hash(password: str) -> str:
     ## Encodage de la chaîne de caractère (fin) ##
     return(hashedPassword) # Renvoie du mot de passe encodé
 
-def ajouterUtilisateur(nom : str, prenom : str, mail : str, mdp : str):
+def ajouterUtilisateur(infosUtilisateurs : tuple):
     """
+    le tuple infosUtilisateurs doit avoir le format (nom : str, prenom : str, mail : str, mdp : str)
     Ajoute un utilisateur dans la base de données qui a pour clef "comptes"
     """
     try :
-        if "@" in mail : 
+        if "@" in infosUtilisateurs[2] : 
             # Ajouter un utilisateur
-            db.reference('comptes').child(mail.replace(".","")).set({
-                'nom': nom,
-                'prenom': prenom,
-                'mail' : mail,
-                'mdp' : mdp,
+            db.reference('comptes').child(infosUtilisateurs[2].replace(".","")).set({
+                'nom': infosUtilisateurs[0],
+                'prenom': infosUtilisateurs[1],
+                'mail' : infosUtilisateurs[2],
+                'mdp' : infosUtilisateurs[3],
             })
         else:
             print("mail incorrect")
     except:
         print("connexion internet instable")
-
-ajouterUtilisateur("bidule","en cehf","aifoau@ehfue","zefgy")
 
 def modifierMdpUtilisateur(clefUtilisateur : str, nouveauMdp : str):
     """
