@@ -29,7 +29,7 @@ def hash(password: str) -> str:
     return(hashedPassword) # Renvoie du mot de passe encodé
 
 
-def ajouterUtilisateur(nom : str, prenom : str, mail : str, mdp : str, clefApi : str, nbApi : int):
+def ajouterUtilisateur(nom : str, prenom : str, mail : str, mdp : str):
     """
     Ajoute un utilisateur dans la base de données qui a pour clef "comptes"
     """
@@ -41,8 +41,6 @@ def ajouterUtilisateur(nom : str, prenom : str, mail : str, mdp : str, clefApi :
                 'prenom': prenom,
                 'mail' : mail,
                 'mdp' : mdp,
-                'clefApi' : clefApi,
-                'nbApi' : nbApi
             })
         else:
             print("mail incorrect")
