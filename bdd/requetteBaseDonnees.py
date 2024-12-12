@@ -46,6 +46,8 @@ def ajouterUtilisateur(nom : str, prenom : str, mail : str, mdp : str):
     except:
         print("connexion internet instable")
 
+ajouterUtilisateur("bidule","en cehf","aifoau@ehfue","zefgy")
+
 def modifierMdpUtilisateur(clefUtilisateur : str, nouveauMdp : str):
     """
     clefUtilisateur est la clef qui renvoie aux données de l'utilisateur 
