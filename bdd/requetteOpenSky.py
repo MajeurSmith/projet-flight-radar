@@ -2,12 +2,11 @@ import requests
 from requests.auth import HTTPBasicAuth
 from datetime import datetime, timedelta, timezone
 
-# Définir les informations d'identification
-username = 'your_username'
-password = 'your_password'
-icao = "LFPG"
+
+icao = "LFPG" #pour paris charles de gaulle
 
 local_time = datetime.now()
+print(local_time)
 
 utc_time = local_time.astimezone(timezone.utc)
 
