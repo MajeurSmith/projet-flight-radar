@@ -101,7 +101,7 @@
      <string>Suppression du compte</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Id3">
+   <widget class="QLineEdit" name="Mail3">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -731,7 +731,7 @@
      <x>0</x>
      <y>0</y>
      <width>544</width>
-     <height>20</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

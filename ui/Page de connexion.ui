@@ -104,7 +104,7 @@
      <string>Connexion</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Id1">
+   <widget class="QLineEdit" name="Mail1">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -163,7 +163,7 @@
      <x>0</x>
      <y>0</y>
      <width>437</width>
-     <height>20</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

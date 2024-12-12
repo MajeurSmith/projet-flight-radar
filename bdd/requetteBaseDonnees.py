@@ -73,34 +73,6 @@ def modifierMailUtilisateur(infosUtilisateurs : tuple):
     except:
         print("connexion internet instable")
 
-def modifierClefApiUtilisateur(infosUtilisateurs : tuple):
-    """
-    infosUtilisateurs doit être au format (clefUtilisateur : str, nouveauMail : str)
-    clefUtilisateur est la clef qui renvoie aux données de l'utilisateur
-    nouveauMdp est le nouveau mdp
-    permet de remplacer la valeur de clefApi par nouvelleClefApi
-    """
-    try:
-        db.reference('comptes').child(infosUtilisateurs[0]).update({
-            'clefApi': infosUtilisateurs[1]
-        })
-    except:
-        print("connexion internet instable")
-
-def modifiernbApi(infosUtilisateurs : tuple):
-    """
-    infosUtilisateurs doit être au format (clefUtilisateur : str, nouveauMail : str)
-    clefUtilisateur est la clef qui renvoie aux données de l'utilisateur
-    nouvelleValeur est la nouvelle valeur
-    permet de remplacer la valeur de nbApi par nouvelleValeur
-    """
-    try:
-        db.reference('comptes').child(infosUtilisateurs[0]).update({
-            'nbApi': infosUtilisateurs[1]
-        })
-    except:
-        print("connexion internet instable")
-
 def modifierNom(infosUtilisateurs : tuple):
     """
     infosUtilisateurs doit être au format (clefUtilisateur : str, nouveauMail : str)
@@ -165,3 +137,4 @@ def getClefApiUtilisateur(utilisateur : dict)->str:
 
 def getNbClefApiUtilisateur(utilisateur : dict)->str:
     return utilisateur["nbApi"]
+
