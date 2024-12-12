@@ -9,7 +9,6 @@ icao = "LFPG"
 
 local_time = datetime.now()
 
-# Convertir l'heure locale en UTC
 utc_time = local_time.astimezone(timezone.utc)
 
 
@@ -29,7 +28,7 @@ print(start_timestamp)
 print(urlGeneralBis)
 
 print("je suis la avant le get")
-# Faire une requête GET avec les identifiants pour récupérer les données
+
 response = requests.get(urlGeneralBis,auth=HTTPBasicAuth('majeurSmith', 'azerty'))
 
 print("tarte au citron")
