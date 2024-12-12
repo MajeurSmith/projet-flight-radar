@@ -47,78 +47,84 @@ def ajouterUtilisateur(infosUtilisateurs : tuple):
     except:
         print("connexion internet instable")
 
-def modifierMdpUtilisateur(clefUtilisateur : str, nouveauMdp : str):
+def modifierMdpUtilisateur(infosUtilisateurs):
     """
+    infosUtilisateurs doir être au format (clefUtilisateur : str, nouveauMdp : str)
     clefUtilisateur est la clef qui renvoie aux données de l'utilisateur 
     """
     try:
-        db.reference('comptes').child(clefUtilisateur).update({
-            'mdp': nouveauMdp
+        db.reference('comptes').child(infosUtilisateurs[0]).update({
+            'mdp': infosUtilisateurs[1]
         })
     except:
         print("connexion internet instable")
 
-def modifierMailUtilisateur(clefUtilisateur : str, nouveauMail : str):
+def modifierMailUtilisateur(infosUtilisateurs : tuple):
     """
+    infosUtilisateurs doit être au format (clefUtilisateur : str, nouveauMail : str)
     clefUtilisateur est la clef qui renvoie aux données de l'utilisateur
     nouveauMail est le nouveau mail
     permet de remplacer la valeur de mail par nouveauMail
     """
     try:
-        db.reference('comptes').child(clefUtilisateur).update({
-            'mail': nouveauMail
+        db.reference('comptes').child(infosUtilisateurs[0]).update({
+            'mail': infosUtilisateurs[1]
         })
     except:
         print("connexion internet instable")
 
-def modifierClefApiUtilisateur(clefUtilisateur : str, nouvelleClefApi : str):
+def modifierClefApiUtilisateur(infosUtilisateurs : tuple):
     """
+    infosUtilisateurs doit être au format (clefUtilisateur : str, nouveauMail : str)
     clefUtilisateur est la clef qui renvoie aux données de l'utilisateur
     nouveauMdp est le nouveau mdp
     permet de remplacer la valeur de clefApi par nouvelleClefApi
     """
     try:
-        db.reference('comptes').child(clefUtilisateur).update({
-            'clefApi': nouvelleClefApi
+        db.reference('comptes').child(infosUtilisateurs[0]).update({
+            'clefApi': infosUtilisateurs[1]
         })
     except:
         print("connexion internet instable")
 
-def modifiernbApi(clefUtilisateur : str, nouvelleValeur : int):
+def modifiernbApi(infosUtilisateurs : tuple):
     """
+    infosUtilisateurs doit être au format (clefUtilisateur : str, nouveauMail : str)
     clefUtilisateur est la clef qui renvoie aux données de l'utilisateur
     nouvelleValeur est la nouvelle valeur
     permet de remplacer la valeur de nbApi par nouvelleValeur
     """
     try:
-        db.reference('comptes').child(clefUtilisateur).update({
-            'nbApi': nouvelleValeur
+        db.reference('comptes').child(infosUtilisateurs[0]).update({
+            'nbApi': infosUtilisateurs[1]
         })
     except:
         print("connexion internet instable")
 
-def modifierNom(clefUtilisateur : str, nouveauNom : int):
+def modifierNom(infosUtilisateurs : tuple):
     """
+    infosUtilisateurs doit être au format (clefUtilisateur : str, nouveauMail : str)
     clefUtilisateur est la clef qui renvoie aux données de l'utilisateur
     nouvelleValeur est la nouvelle valeur
     permet de remplacer la valeur de nom par nouveauNom
     """
     try:
-        db.reference('comptes').child(clefUtilisateur).update({
-            'nom': nouveauNom
+        db.reference('comptes').child(infosUtilisateurs[0]).update({
+            'nom': infosUtilisateurs[1]
         })
     except:
         print("connexion internet instable")
 
-def modifierPrenom(clefUtilisateur : str, nouveauPrenom : int):
+def modifierPrenom(infosUtilisateurs : tuple):
     """
+    infosUtilisateurs doit être au format (clefUtilisateur : str, nouveauMail : str)
     clefUtilisateur est la clef qui renvoie aux données de l'utilisateur
     nouvelleValeur est la nouvelle valeur
     permet de remplacer la valeur de prenom par nouveauPrenom
     """
     try:
-        db.reference('comptes').child(clefUtilisateur).update({
-            'prenom': nouveauPrenom
+        db.reference('comptes').child(infosUtilisateurs[0]).update({
+            'prenom': infosUtilisateurs[1]
         })
     except:
         print("connexion internet instable")

@@ -1,25 +1,36 @@
 import requests
 from requests.auth import HTTPBasicAuth
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 # Définir les informations d'identification
 username = 'your_username'
 password = 'your_password'
-icao = "JFK"
-end_time = datetime.utcnow()
+icao = "LFPG"
+
+local_time = datetime.now()
+
+# Convertir l'heure locale en UTC
+utc_time = local_time.astimezone(timezone.utc)
+
+
+end_time = utc_time
 start_time = end_time - timedelta(hours=1)
+
 start_timestamp = int(start_time.timestamp())
 end_timestamp = int(end_time.timestamp())
 
 
-urlGeneral="https://opensky-network.org/api/flights/arrival?airport="+icao+"&begin=1702219200&end=1702222800"
+
 urlGeneralBis= f"https://opensky-network.org/api/flights/arrival?airport={icao}&begin={start_timestamp}&end={end_timestamp}"
-url = "https://opensky-network.org/api/flights/arrival?airport=LFPG&begin=1702219200&end=1702222800"
-print(urlGeneral==urlGeneralBis)
-#print(url)
-print(urlGeneral)
+url = "https://opensky-network.org/api/flights/arrival?airport=LFPG&begin=1734020112&end=1734023712"
+url = "https://opensky-network.org/api/flights/arrival?airport=JFK&begin=1734024464&end=1734028064"
+print(end_timestamp)
+print(start_timestamp)
+print(urlGeneralBis)
+
+print("je suis la avant le get")
 # Faire une requête GET avec les identifiants pour récupérer les données
-response = requests.get(urlGeneral)
+response = requests.get(urlGeneralBis,auth=HTTPBasicAuth('majeurSmith', 'azerty'))
 
 print("tarte au citron")
 if response.status_code==200:
