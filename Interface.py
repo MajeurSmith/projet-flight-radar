@@ -63,11 +63,14 @@ def creer():
         nom = win2.Nom2.text()
         prenom = win2.Prenom2.text()
         mail = win2.Mail2.text()
+        clef = mail.replace(" ","")
+        clef.replace(".","")
         tuple = (nom, prenom, mail, code)
         texte = "Bonjour, nous sommes ravis de vous compter parmi nos utilisateurs ! Votre compte a bien été créé sur MAFR, et vous êtes maintenant prêt(e) à explorer toutes les fonctionnalités que nous avons à offrir."
+
         clef = ""
         for letter in mail:
-            if letter == ".":
+            if letter == "." and letter == " ":
                 continue
             clef += letter
         dico = getTousUtilisateurs()
