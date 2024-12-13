@@ -145,4 +145,11 @@ def getClefApiUtilisateur(utilisateur : dict)->str:
 def getNbClefApiUtilisateur(utilisateur : dict)->str:
     return utilisateur["nbApi"]
 
+x = getTousUtilisateurs()
+
+for cle in x.keys() :
+    print(cle)
+for valeur in x.values() :
+    print(valeur)
+
 

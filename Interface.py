@@ -1,7 +1,7 @@
 from PyQt5 import uic, QtWidgets
-from PyQt5.QtGui import QIcon
-#from bdd.requetteBaseDonnees import ajouterUtilisateur , hash ,supprimerUtilisateur , getClefApiUtilisateur
-#from mail import envoieMail
+from PyQt5.QtGui import QIcon, QPixmap
+from requetteBaseDonnees import ajouterUtilisateur , hash ,supprimerUtilisateur , getTousUtilisateurs
+from mail import envoieMail
 
 
 win0 = ""
@@ -25,18 +25,40 @@ def connexion():   #Ouvre la page de connexion
     win1.Mail1.setPlaceholderText("E-Mail")
     win1.MDP1.setPlaceholderText("Mot de passe")
 
-#    win1.Connexion1.clicked.connect() #Relier fonction de ton code
+    win1.Confirmer1.clicked.connect(connecter) #Relier fonction de ton code
     win1.Retour1.clicked.connect(fin_win1)
 
     win1.show()
 
+def connecter():
+    global win1
+
+    mail = win1.Mail1.text()
+    clef = ""
+    for letter in mail:
+        if letter == ".":
+            continue
+        clef += letter
+    print(clef)
+
+    mdp = win1.MDP1.text()
+    code = hash(mdp)
+    dico = getTousUtilisateurs()
+
+    if clef in dico.keys() :
+        if code == dico[clef]['mdp'] :
+            prenom = dico[clef]['prenom']
+            win0.Bienvenue.setText(f"Bienvenue {prenom}")
+            win1.close()
+
+
+
 def creation():    #Ouvre la page de création de compte
     global win2
     win2.close()
-    win2.setWindowTitle("Pagee de création de compte")
+    win2.setWindowTitle("Page de création de compte")
     win2.setWindowIcon(QIcon("icones/Logo3.png"))
 
-    win2.Id2.setPlaceholderText("Identifiant")
     win2.MDP2.setPlaceholderText("Mot de passe")
     win2.Nom2.setPlaceholderText("Nom")
     win2.Prenom2.setPlaceholderText("Prenom")
@@ -49,26 +71,34 @@ def creation():    #Ouvre la page de création de compte
 
 def creer():
     global win2
+    try:
+        mdp = win2.MDP2.text()
+        code = hash(mdp)
+        nom = win2.Nom2.text()
+        prenom = win2.Prenom2.text()
+        mail = win2.Mail2.text()
+        tuple = (nom, prenom, mail, code)
+        texte = "Bonjour, nous sommes ravis de vous compter parmi nos utilisateurs ! Votre compte a bien été créé sur MAFR, et vous êtes maintenant prêt(e) à explorer toutes les fonctionnalités que nous avons à offrir."
+        print(texte)
 
-    mdp = win2.MDP2.text()
-    code = hash(mdp)
-    id = win2.Id2.text()
-    nom = win2.Nom2.text()
-    prenom = win2.Prenom2.text()
-    mail = win2.Mail2.text()
-    tuple = (nom, prenom, mail, code)
+        clef = ""
+        for letter in mail:
+            if letter == ".":
+                continue
+            clef += letter
+        print(clef)
+        dico = getTousUtilisateurs()
 
-    ajouterUtilisateur(tuple)
+        if clef in dico.keys() :
+            win2.label.setText("Vous avez déjà un compte lier à cet E-Mail")
+        else :
+            ajouterUtilisateur(tuple)
+            envoieMail(mail,"Objet : Bienvenue sur MAFR !",texte)
 
-
-    envoieMail(mail,
-                "Objet : Bienvenue sur MAFR !",
-                "Bonjour,/n Nous sommes ravis de vous compter parmi nos utilisateurs !/n Votre compte a bien été créé sur MAFR, et vous êtes maintenant prêt(e) à explorer toutes les fonctionnalités que nous avons à offrir.",
-                )
-
-    win0.Bienvenue.setText(f"Bienvenue {id}")
-
-
+            win0.Bienvenue.setText(f"Bienvenue {prenom}")
+            win2.close()
+    except :
+        print("error")
 
 
 def suppression():    #Ouvre la page de suppression de compte
@@ -86,9 +116,24 @@ def suppression():    #Ouvre la page de suppression de compte
     win3.show()
 
 def supprimer():
-    print("soleil")
-    clef = getClefApiUtilisateur()
-    supprimerUtilisateur(clef)
+    global win3
+
+    mail = win3.Mail3.text()
+    clef = ""
+    for letter in mail :
+        if letter == "." :
+            continue
+        clef += letter
+    print(clef)
+
+    mdp = win3.MDP3.text()
+    code = hash(mdp)
+    dico = getTousUtilisateurs()
+
+    if clef in dico.keys():
+        if code == dico[clef]['mdp'] :
+            supprimerUtilisateur(clef)
+            win3.close()
 
 
 
@@ -248,6 +293,12 @@ def debut_programme():
     win0.setWindowTitle("Fenêtre principale")
     win0.setWindowIcon(QIcon("icones/Logo3.png"))
 
+    pixmap1 = QPixmap("icones/outre-mer à placer v2.png")
+    win0.CarteOutremer.setPixmap(pixmap1)
+    pixmap2 = QPixmap("icones/01-Fond-carte-3d.jpg")
+    win0.CarteMetropole.setPixmap(pixmap2)
+    pixmap3 = QPixmap("icones/Logo.png")
+    win0.Logo.setPixmap(pixmap3)
 
 #Connexion des bouttons
     win0.Connexion.clicked.connect(connexion)

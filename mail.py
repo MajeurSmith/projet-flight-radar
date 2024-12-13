@@ -18,6 +18,6 @@ def envoieMail(destinataire : str, objet : str, txt : str, annexe : bool = False
     email.Subject = objet
     email.HTMLBody = txt
     if annexe:
-        email.Attachments.Add(localPath + "\..\images\TableauVol.pdf")
+        email.Attachments.Add(localPath + "Logo.png")
     email.Send()
 

@@ -199,9 +199,6 @@
     <property name="text">
      <string/>
     </property>
-    <property name="pixmap">
-     <pixmap>../../Bibliothèque/01-Fond-carte-3d.jpg</pixmap>
-    </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
@@ -715,9 +712,6 @@
     <property name="text">
      <string/>
     </property>
-    <property name="pixmap">
-     <pixmap>../../Bibliothèque/outre-mer à placer v2.png</pixmap>
-    </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
@@ -774,7 +768,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="ImageAvion">
+   <widget class="QLabel" name="Logo">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -785,9 +779,6 @@
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../Bibliothèque/Logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -804,11 +795,14 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <zorder>CarteOutremer</zorder>
@@ -846,7 +840,7 @@
    <zorder>La_Reunion</zorder>
    <zorder>La_Martinique</zorder>
    <zorder>La_Guyane</zorder>
-   <zorder>ImageAvion</zorder>
+   <zorder>Logo</zorder>
    <zorder>Bienvenue</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
