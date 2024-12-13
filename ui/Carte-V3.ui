@@ -199,6 +199,9 @@
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap>../icone/01-Fond-carte-3d.jpg</pixmap>
+    </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
@@ -712,6 +715,9 @@
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap>../icone/outre-mer_a_placer_v2.png</pixmap>
+    </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
@@ -779,6 +785,9 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../icone/Logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -849,7 +858,7 @@
      <x>0</x>
      <y>0</y>
      <width>1920</width>
-     <height>18</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
