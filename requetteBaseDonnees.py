@@ -4,7 +4,6 @@ import os
 import hashlib
 
 localPath = os.path.dirname(os.path.abspath(__file__))
-# Initialisation de l'application Firebase
 firebase_admin.initialize_app(credentials.Certificate(localPath+'/exemple-a4226-firebase-adminsdk-8einv-0fbbc1bd88.json'), {'databaseURL': 'https://exemple-a4226-default-rtdb.europe-west1.firebasedatabase.app/'})
 
 def hash(password: str) -> str:
@@ -18,14 +17,10 @@ def hash(password: str) -> str:
     Returns:
         str: la chaîne de caractère encodée
     """
-    ## Précondition (début) ##
     assert(type(password) == str), "Erreur de type pour 'password' (requis: str)"
-    ## Précondition (fin) ## 
-    ## Encodage de la chaîne de caractère (début) ##
     h = hashlib.new("SHA256") # Choix du type d'encodage
     h.update(password.encode()) # Encodage
     hashedPassword = h.hexdigest() # Conversion en chaîne de caractère
-    ## Encodage de la chaîne de caractère (fin) ##
     return(hashedPassword) # Renvoie du mot de passe encodé
 
 def ajouterUtilisateur(infosUtilisateurs : tuple):
@@ -138,18 +133,3 @@ def getMailUtilisateur(utilisateur : dict)->str:
 
 def getMdpUtilisateur(utilisateur : dict)->str:
     return utilisateur["mdp"]
-
-def getClefApiUtilisateur(utilisateur : dict)->str:
-    return utilisateur["clefApi"]
-
-def getNbClefApiUtilisateur(utilisateur : dict)->str:
-    return utilisateur["nbApi"]
-
-x = getTousUtilisateurs()
-
-for cle in x.keys() :
-    print(cle)
-for valeur in x.values() :
-    print(valeur)
-
-
