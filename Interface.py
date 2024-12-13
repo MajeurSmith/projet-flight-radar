@@ -197,7 +197,7 @@ def fin_programme():
     sys.exit()
 
 def debut_programme():
-    global win0 , win1 , win2 , win3 , win4 , win5 , win6 , win7 , app
+    global win0 , win1 , win2 , win3 , win4 , win6 , win7 , app
     app = QtWidgets.QApplication([])
     win0 = uic.loadUi("ui/Carte-V3.ui") # fenêtre principal
     win0.setWindowTitle("Fenêtre principale")
