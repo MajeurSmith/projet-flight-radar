@@ -206,7 +206,7 @@ def debut_programme():
     win0.setWindowTitle("Fenêtre principale")
     win0.setWindowIcon(QIcon("icones/Logo3.png"))
     #pixmap1 = QPixmap("icones/outre-mer à placer v2.png")
-    win0.logo.setPixmap(QPixmap("icones/outre-mer à placer v2.png"))
+    win0.CarteOutremer.setPixmap(QPixmap("icones/outre-mer à placer v2.png"))
     #win0.CarteOutremer.setPixmap(pixmap1)
     pixmap2 = QPixmap("icones/01-Fond-carte-3d.jpg")
     win0.CarteMetropole.setPixmap(pixmap2)
